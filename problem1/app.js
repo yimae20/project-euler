@@ -9,5 +9,5 @@ function getValue(num) {
   }
   return sum;
 }
-console.log('15以下の3または5の倍数の和は ' + getValue(15) + ' です。');
-console.log('1000以下の3または5の倍数の和は ' + getValue(1000) + ' です。');
+console.log('15未満の3または5の倍数の和は ' + getValue(15) + ' です。');
+console.log('1000未満の3または5の倍数の和は ' + getValue(1000) + ' です。');
