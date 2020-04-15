@@ -13,7 +13,7 @@ function fib(n) {
   return value;
 }
 
-const limitValue = 4 * 10 ** 7; //400万
+const limitValue = 4 * 10 ** 6; //400万
 //const limitValue = 100; //100
 let evenNumSum = 0;
 let value = 0;
