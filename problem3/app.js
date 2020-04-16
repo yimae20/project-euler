@@ -2,18 +2,15 @@
 
 function primeFactorization(num) {
   let largestPrimeFactor = 0;
-  for (let i = 2; i <= num / 2; i++) {
+  for (let i = 2; i <= num; i++) {
     if (num % i === 0) {
       largestPrimeFactor = i;
       //console.log(largestPrimeFactor);
       num /= i;
-      i = 2;
+      i = 1;
     }
-  }
-  if (largestPrimeFactor === 0) {
-    console.log('この数は素数です。');
   }
   return largestPrimeFactor;
 }
 
-console.log('数60085147514の最大の素因数は ' + primeFactorization(60085147514) + ' です。');
+console.log('数600851475143の最大の素因数は ' + primeFactorization(600851475143) + ' です。');
