@@ -1,45 +1,40 @@
 'use strict';
 
 function isPalindrome(num: number): boolean {
-  type calc = {
-    reverseNum: number;
-    trueOrFalse: boolean;
-  };
   const reverseNum = Number(String(num).split('').reverse().join(''));
-  let trueOrFalse = true;
-  if (num === reverseNum) {
-    return trueOrFalse;
-  } else {
-    return (trueOrFalse = false);
-  }
+  return num === reverseNum;
 }
 
-function largestCalc(digit: number): number[] {
-  type calc = {
-    upperLimit: number;
-    lowerLimit: number;
-    largestPalindrome: number;
-    num1: number;
-    num2: number;
-  };
-  const upperLimit = Math.pow(10, digit) - 1;
-  const lowerLimit = upperLimit - Math.pow(10, digit - 1);
+type Palindrome = {
+  value: number;
+  number1: number;
+  number2: number;
+};
+
+function largestCalc(digit: number): Palindrome {
+  const upperLimit = Math.pow(10, digit) - 1; // 999
+  const lowerLimit = Math.pow(10, digit - 1); // 100
+
   let largestPalindrome = 0;
-  let num1 = 0;
-  let num2 = 0;
+
+  let palindrome: Palindrome;
 
   for (let i = upperLimit; i >= lowerLimit; i--) {
-    for (let j = upperLimit; j >= lowerLimit; j--) {
-      if (isPalindrome(i * j) === true && largestPalindrome < i * j) {
-        largestPalindrome = i * j;
-        num1 = i;
-        num2 = j;
+    for (let j = i; j >= lowerLimit; j--) {
+      const value = i * j;
+      if (isPalindrome(value) && largestPalindrome < value) {
+        largestPalindrome = value;
+        palindrome = {
+          value,
+          number1: i,
+          number2: j,
+        };
       }
     }
   }
-  let ans: number[] = [largestPalindrome, num1, num2];
-  return ans;
+  return palindrome;
 }
 
-let ans: number[] = largestCalc(3); //ans[回文, 数字1, 数字2]　 回文=数字1＊数字2
-console.log('2つの3桁の数字の積から最大の回文は ' + ans[0] + ' = ' + ans[1] + ' x ' + ans[2] + ' です。');
+let ans = largestCalc(3); //ans[回文, 数字1, 数字2]　 回文=数字1＊数字2
+const { value: v, number1: n1, number2: n2 } = ans;
+console.log('2つの3桁の数字の積から最大の回文は ' + v + ' = ' + n1 + ' x ' + n2 + ' です。');
