@@ -1,0 +1,11 @@
+{
+  "name": "project-euler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:yimae20/project-euler.git",
+  "author": "yimae20 <yimae@minebeamitsumi.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^13.13.2"
+  }
+}
