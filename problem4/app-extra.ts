@@ -35,6 +35,6 @@ function largestCalc(digit: number): Palindrome {
   return palindrome;
 }
 
-let ans = largestCalc(3); //ans[回文, 数字1, 数字2]　 回文=数字1＊数字2
+const ans = largestCalc(3); //ans[回文, 数字1, 数字2]　 回文=数字1＊数字2
 const { value: v, number1: n1, number2: n2 } = ans;
 console.log('2つの3桁の数字の積から最大の回文は ' + v + ' = ' + n1 + ' x ' + n2 + ' です。');

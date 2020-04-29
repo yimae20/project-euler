@@ -13,9 +13,25 @@ function readFile(fileName: string): Promise<string> {
   });
 }
 
-readFile(fileName).then((data: string) => {
+function validate(value: string[][]): void {
+  // ---
+  // NG : throw Include invalid value
+  //    : throw Not grid
+  // ---
+}
+
+function parse(data: string): number[][] {
   const arrayData = data.split(/\r|\n/).filter((value) => value !== '');
-  let arrayGridNumbers = [];
+  const arrArrData = arrayData.map((arr) => arr.split(' '));
+
+  validate(arrArrData);
+
+  return arrArrData.map((arrData) => arrData.map((v) => parseInt(v, 10)));
+}
+
+readFile(fileName).then((data: string) => {
+  /*   const arrayData = data.split(/\r|\n/).filter((value) => value !== '');
+  let arrayGridNumbers: number[][] = [];
   const columnLength = arrayData.length;
   const rowLength = arrayData[0]
     .split(' ')
@@ -24,14 +40,24 @@ readFile(fileName).then((data: string) => {
   for (let i = 0; i <= columnLength - 1; i++) {
     arrayGridNumbers[i] = arrayData[i]
       .split(' ')
-      .map((value) => parseInt(value, 10))
-      .filter((value) => !isNaN(value));
+      .map((value) => {
+        const parsed = parseInt(value, 10);
+        if (!isNaN(parsed)) {
+          throw Error("不正な値が入っています")
+        }
+        return parsed;
+      })
+//      .filter((value) => !isNaN(value));
     console.log(arrayGridNumbers[i]);
     if (arrayGridNumbers[i].length !== rowLength) {
       throw Error('読み込んだファイルはグリッド状になっていません。');
     }
   }
-  let answer = rowGridProduct(arrayGridNumbers, number, rowLength, columnLength);
+ */
+
+  const arrayGridNumbers = parse(data);
+
+  let answer = rowGridProduct(arrayGridNumbers, number);
   if (answer < columnGridProduct(arrayGridNumbers, number, rowLength, columnLength)) {
     answer = columnGridProduct(arrayGridNumbers, number, rowLength, columnLength);
   }
@@ -46,7 +72,13 @@ readFile(fileName).then((data: string) => {
   );
 });
 
-function rowGridProduct(arrayGridNumbers: number[][], number: number, columnLength: number, rowLength: number): number {
+function rowGridProduct(arrayGridNumbers: number[][], number: number): number {
+  if (arrayGridNumbers.length == 0) {
+    return 0;
+  }
+  const columnLength = arrayGridNumbers[0].length;
+  const rowLength = arrayGridNumbers.length;
+
   let greatestProduct = 0;
   for (let i = 0; i < rowLength; i++) {
     for (let j = 0; j <= columnLength - number; j++) {
