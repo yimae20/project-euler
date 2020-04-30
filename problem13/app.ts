@@ -15,21 +15,19 @@ readFile(fileName).then((data: string) => {
   const arrayData = data.split(/\r|\n/).filter((value) => value !== '');
   const numberOfLines = arrayData.length; //数値の数（行数）
   const digitNumber = arrayData[0].split('').map((value) => parseInt(value, 10)).length; //数値の桁数
-  const arrayArrNumbers: number[][] = [];
   const sumNumbers: number[] = [];
   for (let i = 0; i <= numberOfLines - 1; i++) {
-    //数値を二次元配列に代入し、配列をreverseする
-    arrayArrNumbers[i] = arrayData[i]
-      .split('')
-      .map((value) => parseInt(value, 10))
-      .reverse();
-
     for (let j = 0; j <= digitNumber - 1; j++) {
+      //数値を配列に代入しreverseする
+      const arrayNumbers = arrayData[i]
+        .split('')
+        .map((value) => parseInt(value, 10))
+        .reverse();
       //各桁で和を求める
       if (isNaN(sumNumbers[j]) === true) {
-        sumNumbers[j] = arrayArrNumbers[i][j];
+        sumNumbers[j] = arrayNumbers[j];
       } else {
-        sumNumbers[j] += arrayArrNumbers[i][j];
+        sumNumbers[j] += arrayNumbers[j];
       }
       //各桁の和が10を超えた場合、繰り上げ処理を行う
       if (sumNumbers[j] >= 10) {
