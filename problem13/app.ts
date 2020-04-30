@@ -25,13 +25,13 @@ readFile(fileName).then((data: string) => {
       .reverse();
 
     for (let j = 0; j <= digitNumber - 1; j++) {
-      //各桁数を足す
+      //各桁で和を求める
       if (isNaN(sumNumbers[j]) === true) {
         sumNumbers[j] = arrayArrNumbers[i][j];
       } else {
         sumNumbers[j] += arrayArrNumbers[i][j];
       }
-      //各桁数が10を超えた場合、繰り上げ処理を行う
+      //各桁の和が10を超えた場合、繰り上げ処理を行う
       if (sumNumbers[j] >= 10) {
         if (isNaN(sumNumbers[j + 1]) === true) {
           sumNumbers[j + 1] = 1;
