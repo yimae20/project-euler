@@ -15,7 +15,7 @@ function iterativeSequence(number: number): number {
 }
 
 function findLongestChainNumber(limitNumber: number): number {
-  const valueMap = new Map();
+  const valueMap = new Map<number, number>();
   let longestChainCount = 0;
   let longestChainNumber = 0;
   for (let i = 2; i <= limitNumber; i++) {
@@ -28,7 +28,10 @@ function findLongestChainNumber(limitNumber: number): number {
       // true : その時の連鎖回数を取得し、while loopを終了する
       // false: シーケンスの実行、仮配列に現在の数値を代入
       if (valueMap.has(currentNumber)) {
-        calculatedValue = valueMap.get(currentNumber);
+        const value = valueMap.get(currentNumber);
+        if (typeof value !== 'undefined') {
+          calculatedValue = value;
+        }
         currentNumber = 1;
       } else {
         tmpArray[count] = currentNumber;
@@ -48,10 +51,10 @@ function findLongestChainNumber(limitNumber: number): number {
     }
   }
   // console.log(longestChainNumber, longestChainCount);
+  console.log(process.memoryUsage());
   return longestChainNumber;
 }
-
-const limitNumber = 1000000; // 開始数の最大値
+const limitNumber = 2000000; // 開始数の最大値
 console.log(`${limitNumber} 以下の開始数の中で最も長い連鎖ができるのは ${findLongestChainNumber(limitNumber)} です。`);
 
 const endTime = Date.now();
