@@ -76,7 +76,7 @@ const denominator = [1830101, 286452465, 4109105700, 475, 562047322471580, 24014
 // const numerator = [4,12];
 // const denominator = [3,2];
 
-for (let i = 1; i <= 100000; i++) {
+for (let i = 1; i <= 10000; i++) {
   calc(numerator, denominator);
 }
 const endTime = Date.now();
