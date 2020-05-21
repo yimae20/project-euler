@@ -43,18 +43,20 @@ function findLongestChainNumber(limitNumber: number): number {
     for (let k = 0; k < count; k++) {
       valueMap.set(tmpArray[k], sumCount - k);
     }
-    // console.log(valueMap);
     //最大連鎖回数とその時の開始数を更新
     if (longestChainCount < sumCount) {
       longestChainCount = sumCount;
       longestChainNumber = i;
     }
   }
+  // const len = Object.keys(valueMap);
+  // console.log(len);
   // console.log(longestChainNumber, longestChainCount);
+  console.log(valueMap.size);
   console.log(process.memoryUsage());
   return longestChainNumber;
 }
-const limitNumber = 2000000; // 開始数の最大値
+const limitNumber = 4000000; // 開始数の最大値
 console.log(`${limitNumber} 以下の開始数の中で最も長い連鎖ができるのは ${findLongestChainNumber(limitNumber)} です。`);
 
 const endTime = Date.now();
