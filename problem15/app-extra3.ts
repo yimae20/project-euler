@@ -27,18 +27,21 @@ function factorizationInPrimeNumbers(value: number): number[] {
 function calc(numerator: number[], denominator: number[]): number {
   const numeratorLength = numerator.length;
   const denominatorLength = denominator.length;
-  let numeratorPrimes: number[] = [];
-  let denominatorPrimes: number[] = [];
+  const numeratorPrimesS: number[][] = [];
+  const denominatorPrimesS: number[][] = [];
 
   // 分母分子のそれぞれの配列に対して素因数分解をする
   for (let i = 0; i < numeratorLength; i++) {
     const primes = factorizationInPrimeNumbers(numerator[i]);
-    numeratorPrimes = lodash.concat(numeratorPrimes, primes);
+    numeratorPrimesS.push(primes);
   }
+  const numeratorPrimes = lodash.flatten(numeratorPrimesS);
+
   for (let i = 0; i < denominatorLength; i++) {
     const primes = factorizationInPrimeNumbers(denominator[i]);
-    denominatorPrimes = lodash.concat(denominatorPrimes, primes);
+    denominatorPrimesS.push(primes);
   }
+  const denominatorPrimes = lodash.flatten(denominatorPrimesS);
   const denominatorPrimesLength = denominatorPrimes.length;
 
   //約分処理
