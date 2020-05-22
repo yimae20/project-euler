@@ -21,12 +21,10 @@ function twoToTheNthPowerSumOfDigits(multiplier: number): number {
       }
     }
     // 繰り上げ処理2
-    for (let k = 0; k < digit - 1; k++) {
-      if (tmpMap.get(k) === 1) {
-        ansArray[k + 1]++;
-      }
-    }
-    if (tmpMap.get(digit - 1) === 1) {
+    tmpMap.forEach((value, key) => {
+      ansArray[key + 1] += value;
+    });
+    if (tmpMap.has(digit - 1)) {
       ansArray[digit] = 1;
     }
     digit = ansArray.length;
