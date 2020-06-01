@@ -32,7 +32,7 @@ it cannot be solved by brute force, and requires a clever method! ;o)
 */
 
 import * as fs from 'fs';
-const fileName = './problem18/number-triangle.txt';
+const fileName = 'number-triangle.txt';
 
 // ファイルの読み込み
 function readFile(fileName: string): Promise<string> {
