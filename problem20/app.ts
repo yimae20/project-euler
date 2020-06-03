@@ -11,9 +11,8 @@ function factorialDigitSum(endNumber: number): number {
   let ansArray: number[] = [1];
   let digit = 1;
 
-  // 指定の乗数回だけ掛け算を繰り返す
+  // 階乗の計算（各桁配列すべてにiを掛ける）
   for (let i = 1; i <= endNumber; i++) {
-    // ans*iを計算する（各桁配列すべてにiを掛ける）
     ansArray = ansArray.map((x) => x * i);
 
     // 各桁が10以上になった場合に繰り上げ処理を行う。各桁が10以下になるまで
