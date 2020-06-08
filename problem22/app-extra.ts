@@ -30,7 +30,8 @@ What is the total of all the name scores in the file?
 //発展課題1
 import { readFile } from '../util/basic';
 //発展課題1.1
-const fileName = __dirname + '/p022_names.txt';
+import * as path from 'path';
+const fileName = path.join(__dirname, 'p022_names.txt');
 
 // 文字のスコアを取得（アルファベットのみ）
 function getLetterScore(letter: string): number {
