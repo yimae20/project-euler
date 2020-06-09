@@ -35,7 +35,7 @@ function isSumOfTwoAbundantNumbers(abundantNumbersArray: number[], number: numbe
   const tmpArray = abundantNumbersArray.filter((value) => value <= number - 12);
   const tmpArrayLength = tmpArray.length;
   for (let i = 0; i < tmpArrayLength; i++) {
-    for (let j = 0; j < tmpArrayLength; j++) {
+    for (let j = i; j < tmpArrayLength; j++) {
       if (number === tmpArray[i] + tmpArray[j]) {
         return true;
       }
@@ -68,16 +68,9 @@ function calc(limitNumber: number): number {
   let sumValue = 0;
   const abundantNumbersArray = getAbundantNumbersArray(limitNumber);
   for (let i = 1; i <= limitNumber; i++) {
-    // iが偶数のとき
-    if (i % 2 === 0) {
-      if (!isSumOfTwoAbundantNumbers(abundantNumbersArray, i)) {
-        sumValue += i;
-      }
-      // iが奇数のとき
-    } else {
-      if (!isSumOfTwoAbundantNumbers2(abundantNumbersArray, i)) {
-        sumValue += i;
-      }
+    const func = i % 2 === 0 ? isSumOfTwoAbundantNumbers : isSumOfTwoAbundantNumbers2;
+    if (!func(abundantNumbersArray, i)) {
+      sumValue += i;
     }
   }
   return sumValue;
