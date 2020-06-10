@@ -18,3 +18,12 @@ export function getDivisors(number: number): number[] {
   }
   return divisorsArr;
 }
+
+// 階乗の計算
+export function factorial(number: number): number {
+  let ans = 1;
+  for (let i = 1; i <= number; i++) {
+    ans *= i;
+  }
+  return ans;
+}
