@@ -38,7 +38,7 @@ function recurringDecimalCount(numerator: number, denominator: number): number {
     count++;
   }
   // 割り切れる数なら循環小数なしのため、countは0を返す
-  return count;
+  return (count = 0);
 }
 
 // 最長の循環小数を持つ整数を求める
