@@ -17,7 +17,7 @@ It can be seen that 1/7 has a 6-digit recurring cycle.
 Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
  */
 
-import { isPrimeFactor } from '../util/Math';
+import { isPrime } from '../util/Math';
 
 // 循環小数の長さを計算
 // 手計算と同じ方法：1/d mod x => 10x/d mod y => 10y/d mod z => ・・・
@@ -47,7 +47,7 @@ function largestRecurringDecimal(limitNumber: number): number {
   let ansNum = 0;
   for (let i = 2; i <= limitNumber; i++) {
     // 素数のみ計算
-    if (isPrimeFactor(i)) {
+    if (isPrime(i)) {
       const iLength = String(i).length;
       const iCount = recurringDecimalCount(iLength * 10, i);
       if (largestCount < iCount) {
