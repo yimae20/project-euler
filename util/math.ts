@@ -1,11 +1,11 @@
 //  素数判定
-export function isPrimeFactor(number: number): boolean {
+export function isPrime(number: number): boolean {
   for (let i = 2; i <= Math.sqrt(number); i++) {
     if (number % i === 0) {
       return false;
     }
   }
-  return true;
+  return number < 2 ? false : true;
 }
 
 // 約数配列の取得(1を含む)
